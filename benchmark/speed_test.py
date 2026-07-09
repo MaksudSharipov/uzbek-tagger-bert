@@ -17,7 +17,7 @@ SENTENCES = [
     "Bugun talabalar yangi mavzuni o‘rgandilar.",
     "U yuz burib ketdi va yuz soat ishladi.",
     "Alisher sariq olma olib menga qizil olma olmading dedi.",
-    "O‘rgan mustaqil davlatdir.",
+    "O‘rgan va izlan.",
     "Bozordan olma olib kel.",
 ] * 20
 

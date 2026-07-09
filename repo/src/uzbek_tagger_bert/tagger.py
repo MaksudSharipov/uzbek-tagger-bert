@@ -92,6 +92,11 @@ class UzbekTaggerBERT:
             else:
                 label = "PUNCT" if not token.isalnum() else "X"
 
+            # Post-process punctuation override
+            punctuation_chars = set(".,!?;:()[]{}\"'‘’“”…-—")
+            if token in punctuation_chars or all(c in punctuation_chars for c in token):
+                label = "PUNCT"
+
             results.append(
                 {
                     "token": token,

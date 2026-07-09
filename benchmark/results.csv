@@ -1,0 +1,5 @@
+model,accuracy,macro_f1,weighted_f1,notes
+UzbekTaggerBERT,0.9810,TODO,0.9811,Reported public PyPI/Hugging Face evaluation result
+mBERT,TODO,TODO,TODO,To be added for SoftwareX baseline comparison
+XLM-R,TODO,TODO,TODO,To be added for SoftwareX baseline comparison
+CRF baseline,TODO,TODO,TODO,To be added if baseline experiment is available

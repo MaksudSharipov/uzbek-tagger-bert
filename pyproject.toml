@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uzbek-tagger-bert"
+version = "0.1.2"
+description = "An open-source Python library for Transformer-based part-of-speech tagging of the Uzbek language using a fine-tuned Tahrirchi-BERT model."
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Maksud Sharipov", email = "maqsbek72@gmail.com" }
+]
+keywords = [
+    "Uzbek",
+    "Uzbek NLP",
+    "part-of-speech tagging",
+    "POS tagging",
+    "Transformer",
+    "BERT",
+    "Tahrirchi-BERT",
+    "low-resource language",
+    "agglutinative language",
+    "Python",
+    "Hugging Face",
+    "PyPI"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "torch>=1.10.0",
+    "transformers>=4.20.0",
+    "numpy>=1.21.0"
+]
+
+[project.scripts]
+uzbek-tagger = "uzbek_tagger_bert.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/MaksudSharipov/uzbek-tagger-bert"
+Repository = "https://github.com/MaksudSharipov/uzbek-tagger-bert"
+PyPI = "https://pypi.org/project/uzbek-tagger-bert/"
+Model = "https://huggingface.co/MaksudSharipov/Uzbek-POS-Tagger-TahrirchiBERT"
+Issues = "https://github.com/MaksudSharipov/uzbek-tagger-bert/issues"
+
+[tool.setuptools]
+package-dir = { "" = "repo/src" }
+
+[tool.setuptools.packages.find]
+where = ["repo/src"]
+include = ["uzbek_tagger_bert*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

@@ -1,23 +1,39 @@
-import warnings
-from transformers import pipeline
+"""Model-loading utilities for UzbekTaggerBERT."""
 
-warnings.filterwarnings("ignore")
+from __future__ import annotations
 
-def load_pos_pipeline(model_id: str = "MaksudSharipov/Uzbek-POS-Tagger-TahrirchiBERT"):
-    """
-    Downloads and loads the token classification pipeline from Hugging Face.
-    """
-    print("Loading the model from Hugging Face. Please wait...")
-    try:
-        nlp = pipeline(
-            "token-classification",
-            model=model_id,
-            tokenizer=model_id,
-            aggregation_strategy="simple",
-            ignore_labels=[]  # Prevents filtering of label classes
-        )
-        print("Success: Model is ready to use!\n")
-        return nlp
-    except Exception as e:
-        print(f"Error loading model: {e}")
-        return None
+from dataclasses import dataclass
+from typing import Optional, Tuple
+
+import torch
+from transformers import AutoModelForTokenClassification, AutoTokenizer
+
+
+DEFAULT_MODEL_NAME = "MaksudSharipov/Uzbek-POS-Tagger-TahrirchiBERT"
+
+
+@dataclass
+class LoadedModel:
+    tokenizer: object
+    model: object
+    device: torch.device
+
+
+def resolve_device(device: Optional[str] = None) -> torch.device:
+    """Resolve CPU/GPU device."""
+    if device is None or device == "auto":
+        return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    return torch.device(device)
+
+
+def load_model(
+    model_name: str = DEFAULT_MODEL_NAME,
+    device: Optional[str] = "auto",
+) -> LoadedModel:
+    """Load tokenizer and token-classification model from Hugging Face Hub."""
+    resolved_device = resolve_device(device)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
+    model = AutoModelForTokenClassification.from_pretrained(model_name)
+    model.to(resolved_device)
+    model.eval()
+    return LoadedModel(tokenizer=tokenizer, model=model, device=resolved_device)

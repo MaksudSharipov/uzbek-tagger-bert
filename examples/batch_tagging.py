@@ -13,7 +13,7 @@ def main() -> None:
     sentences = [
         "Bugun talabalar yangi mavzuni o‘rgandilar.",
         "Bozordan olma olib kel.",
-        "O‘zbekiston mustaqil davlatdir.",
+        "O‘rgan yaxshi odatdir.",
         "U yuz burib ketdi va yuz soat ishladi.",
     ]
 

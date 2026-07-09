@@ -1,4 +1,3 @@
-
 # UzbekTaggerBERT
 
 [![PyPI version](https://badge.fury.io/py/uzbek-tagger-bert.svg)](https://pypi.org/project/uzbek-tagger-bert/)

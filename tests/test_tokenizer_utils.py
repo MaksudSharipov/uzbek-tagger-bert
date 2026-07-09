@@ -4,14 +4,15 @@ from uzbek_tagger_bert.tokenizer_utils import normalize_uzbek_text, overlap_size
 
 
 def test_normalize_apostrophes():
-    text = "O'zbekiston O‘zbekiston Oʼzbekiston G‘afur"
+    text = "O'rgan O‘rgan Oʼrgan Oʻrgan G‘afur ma’no"
     normalized = normalize_uzbek_text(text)
-    assert "Oʻzbekiston" in normalized or "Oʻ" in normalized
-    assert "Gʻafur" in normalized or "Gʻ" in normalized
+    assert "O'rgan" in normalized
+    assert "Gʻafur" in normalized
+    assert "maʻno" in normalized
 
 
 def test_word_spans_keeps_uzbek_words():
-    text = normalize_uzbek_text("O‘zbekiston mustaqil davlatdir.")
+    text = normalize_uzbek_text("O‘rgan yaxshi odatdir.")
     spans = word_spans(text)
     tokens = [item[0] for item in spans]
     assert len(tokens) >= 4

@@ -90,4 +90,4 @@ The package automatically uses CPU if CUDA is not available.
 
 ### Apostrophe-related tokenization issues
 
-Uzbek Latin texts may contain different apostrophe variants. UzbekTaggerBERT includes text normalization for common apostrophe variants used in Uzbek words such as `O‘zbekiston`, `g‘alaba`, and `ma’no`.
+Uzbek Latin texts may contain different apostrophe variants. UzbekTaggerBERT includes text normalization for common apostrophe variants used in Uzbek words such as `O'rgan`, `O‘rgan`, `Oʼrgan`, `Oʻrgan`, `g‘alaba`, and `ma’no`.

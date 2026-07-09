@@ -1,42 +1,52 @@
+"""Text normalization and token-span utilities for UzbekTaggerBERT."""
+
+from __future__ import annotations
+
 import re
+from typing import List, Tuple
 
-def normalize_text(text: str) -> str:
+
+# Common apostrophe variants found in Uzbek Latin text.
+APOSTROPHE_MAP = {
+    "‘": "ʻ",
+    "’": "ʻ",
+    "`": "ʻ",
+    "´": "ʻ",
+    "ʼ": "ʻ",
+    "ʻ": "ʻ",
+}
+
+
+def normalize_uzbek_text(text: str) -> str:
+    """Normalize common apostrophe variants in Uzbek Latin text.
+
+    The function intentionally keeps the text lightweight and transparent.
+    It can be extended with Cyrillic-to-Latin transliteration or domain-specific
+    normalization rules in later versions.
     """
-    Standardizes apostrophes, pads punctuation, and normalizes whitespaces
-    specifically for the Uzbek language to ensure optimal tokenization.
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+
+    normalized = text
+    for old, new in APOSTROPHE_MAP.items():
+        normalized = normalized.replace(old, new)
+
+    # Normalize excessive whitespace while preserving token boundaries.
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    return normalized
+
+
+def word_spans(text: str) -> List[Tuple[str, int, int]]:
+    """Return tokens with character spans.
+
+    The tokenizer keeps Uzbek words containing apostrophes as one token, and
+    separates punctuation marks as independent tokens. This is useful for
+    mapping Transformer subword predictions back to original words.
     """
-    # Normalize various types of curly quotes/apostrophes used in Uzbek Latin to a straight single quote
-    text = re.sub(r"[‘'’`´ʻʼ\"“”]", "'", text)
-    # Join split parts around apostrophes (e.g., O'zbekiston)
-    text = re.sub(r"([a-zA-Z])\s+'\s*([a-zA-Z])", r"\1'\2", text)
-    # Pad punctuation with spaces
-    text = re.sub(r'([.,!?();:])', r' \1 ', text)
-    # Standardize spaces
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
+    pattern = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿЀ-ӿ0-9]+(?:[ʻ'’-][A-Za-zÀ-ÖØ-öø-ÿЀ-ӿ0-9]+)*|[^\w\s]", re.UNICODE)
+    return [(m.group(0), m.start(), m.end()) for m in pattern.finditer(text)]
 
-def align_tokens_to_words(clean_text: str, pipeline_results: list) -> list:
-    """
-    Uses an overlap-based offset mapping algorithm to align subword token
-    predictions back to the original word boundaries, resolving the UNKNOWN tag problem.
-    """
-    tagged_words = []
-    
-    # Identify original, whitespace-separated words and their start/end offsets
-    for match in re.finditer(r'\S+', clean_text):
-        word_start = match.start()
-        word_end = match.end()
-        word_text = match.group()
 
-        word_tag = "UNKNOWN"
-
-        # Check for overlaps with predicted tokens
-        for entity in pipeline_results:
-            # Overlap checking: if the entity token overlaps with the word boundary
-            if entity['start'] < word_end and entity['end'] > word_start:
-                word_tag = entity.get('entity_group', entity.get('entity', 'UNKNOWN'))
-                break
-
-        tagged_words.append((word_text, word_tag))
-        
-    return tagged_words
+def overlap_size(a_start: int, a_end: int, b_start: int, b_end: int) -> int:
+    """Return the overlap length of two character spans."""
+    return max(0, min(a_end, b_end) - max(a_start, b_start))

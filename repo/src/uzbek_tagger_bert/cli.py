@@ -1,30 +1,53 @@
-import sys
-import argparse
-from uzbek_tagger_bert.tagger import UzbekTaggerBERT
+"""Command-line interface for UzbekTaggerBERT."""
 
-def main():
+from __future__ import annotations
+
+import argparse
+import json
+
+from .tagger import UzbekTaggerBERT
+
+
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="UzbekTaggerBERT Command Line Tool: High-Accuracy POS Tagger for Uzbek."
+        description="Transformer-based POS tagging for Uzbek text."
     )
-    parser.add_argument("text", type=str, nargs="?", help="Text to tag. If not provided, reads from standard input.")
+    parser.add_argument(
+        "text",
+        type=str,
+        help="Uzbek text to tag.",
+    )
+    parser.add_argument(
+        "--format",
+        choices=["slash", "json", "conll"],
+        default="slash",
+        help="Output format. Default: slash.",
+    )
+    parser.add_argument(
+        "--model",
+        default="MaksudSharipov/Uzbek-POS-Tagger-TahrirchiBERT",
+        help="Hugging Face model name or local model path.",
+    )
+    parser.add_argument(
+        "--device",
+        default="auto",
+        help="Device: auto, cpu, cuda, etc.",
+    )
+    return parser
+
+
+def main() -> None:
+    parser = build_parser()
     args = parser.parse_args()
 
-    # Initialize the tagger
-    tagger = UzbekTaggerBERT()
+    tagger = UzbekTaggerBERT(model_name=args.model, device=args.device)
+    output = tagger(args.text, output_format=args.format)
 
-    if args.text:
-        # Tag argument text
-        print(tagger(args.text))
+    if args.format == "json":
+        print(json.dumps(output, ensure_ascii=False, indent=2))
     else:
-        # Read from standard input (useful for piping in terminal)
-        if not sys.stdin.isatty():
-            text = sys.stdin.read().strip()
-            if text:
-                print(tagger(text))
-            else:
-                parser.print_help()
-        else:
-            parser.print_help()
+        print(output)
+
 
 if __name__ == "__main__":
     main()

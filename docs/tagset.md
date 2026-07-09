@@ -15,7 +15,7 @@ UzbekTaggerBERT supports 16 Universal POS tags adapted for Uzbek part-of-speech 
 | NUM | Numeral | Son | bir, ikki, yuz |
 | PART | Particle | Yuklama | -mi, -chi, faqat |
 | PRON | Pronoun | Olmosh | men, u, biz |
-| PROPN | Proper noun | Atoqli ot | Alisher, Toshkent, O‘zbekiston |
+| PROPN | Proper noun | Atoqli ot | Alisher, Toshkent, Samarqand |
 | PUNCT | Punctuation | Tinish belgisi | ., ,, !, ? |
 | SCONJ | Subordinating conjunction | Ergash bog‘lovchi | chunki, agar, garchi |
 | SYM | Symbol | Simvol | %, $, + |
@@ -50,10 +50,10 @@ UzbekTaggerBERT uses a fine-tuned Tahrirchi-BERT Transformer model to resolve su
 Uzbek Latin texts often contain several apostrophe-like characters:
 
 ```text
-O'zbekiston
-O‘zbekiston
-Oʼzbekiston
-Oʻzbekiston
+O'rgan
+O‘rgan
+Oʼrgan
+Oʻrgan
 ```
 
 The package normalizes common variants to reduce tokenization errors and improve alignment between subword tokens and original word boundaries.

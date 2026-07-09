@@ -6,7 +6,7 @@ authors:
   - family-names: "Sharipov"
     given-names: "Maksud"
     email: "maqsbek72@gmail.com"
-version: "0.1.2"
+version: "1.0.0"
 date-released: "2026-03-21"
 license: "Apache-2.0"
 repository-code: "https://github.com/MaksudSharipov/uzbek-tagger-bert"

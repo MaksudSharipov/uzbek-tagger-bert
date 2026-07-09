@@ -3,6 +3,6 @@
 from .tagger import UzbekTaggerBERT, UzbekPOSTagger
 from .label_map import POS_LABELS
 
-__version__ = "0.1.2"
+__version__ = "1.0.0"
 
 __all__ = ["UzbekTaggerBERT", "UzbekPOSTagger", "POS_LABELS"]

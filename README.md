@@ -7,6 +7,13 @@
 
 **UzbekTaggerBERT** is an open-source Python library for Transformer-based part-of-speech tagging of the Uzbek language. It is built on a fine-tuned **Tahrirchi-BERT** model and is designed to assign Universal POS tags to Uzbek words in context.
 
+- **Current software version:** v1.0.0
+- **Previous PyPI release:** v0.1.2
+- **PyPI package:** [uzbek-tagger-bert](https://pypi.org/project/uzbek-tagger-bert/)
+- **GitHub repository:** [MaksudSharipov/uzbek-tagger-bert](https://github.com/MaksudSharipov/uzbek-tagger-bert)
+- **Hugging Face model:** [MaksudSharipov/Uzbek-POS-Tagger-TahrirchiBERT](https://huggingface.co/MaksudSharipov/Uzbek-POS-Tagger-TahrirchiBERT)
+- **License:** Apache License 2.0
+
 The library addresses key challenges of Uzbek NLP, including agglutinative word formation, contextual homonym disambiguation, apostrophe normalization, and subword-to-word alignment in Transformer-based token classification.
 
 ## Main Features
@@ -143,6 +150,7 @@ UzbekTaggerBERT handles this problem by using a Transformer-based contextual enc
 2. **Subword tokenization**: uses the Transformer tokenizer associated with the fine-tuned Tahrirchi-BERT model.
 3. **Offset alignment**: maps subword-level model predictions back to original word boundaries.
 4. **Contextual POS prediction**: assigns POS tags based on surrounding context.
+5. **Punctuation post-processing**: punctuation tokens are deterministically tagged as `PUNCT` (e.g., `.`, `,`, `!`, `?`, etc. are always mapped to `PUNCT`).
 
 ## Use Cases
 

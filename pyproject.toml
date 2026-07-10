@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uzbek-tagger-bert"
-version = "1.0.0"
+version = "1.0.1"
 description = "An open-source Python library for Transformer-based part-of-speech tagging of the Uzbek language using a fine-tuned Tahrirchi-BERT model."
 readme = "README.md"
 requires-python = ">=3.7"

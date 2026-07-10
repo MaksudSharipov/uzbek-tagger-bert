@@ -1,14 +1,14 @@
 # UzbekTaggerBERT
 
 [![PyPI version](https://badge.fury.io/py/uzbek-tagger-bert.svg)](https://pypi.org/project/uzbek-tagger-bert/)
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/MaksudSharipov/uzbek-tagger-bert/blob/main/LICENSE)
 [![Python](https://img.shields.io/badge/python-%3E%3D3.7-blue.svg)](https://www.python.org/)
 [![Hugging Face](https://img.shields.io/badge/HuggingFace-Model-yellow.svg)](https://huggingface.co/MaksudSharipov/Uzbek-POS-Tagger-TahrirchiBERT)
 
 **UzbekTaggerBERT** is an open-source Python library for Transformer-based part-of-speech tagging of the Uzbek language. It is built on a fine-tuned **Tahrirchi-BERT** model and is designed to assign Universal POS tags to Uzbek words in context.
 
-- **Current software version:** v1.0.0
-- **Previous PyPI release:** v0.1.2
+- **Current software version:** v1.0.1
+- **Previous PyPI release:** v0.1.2 (and v1.0.0)
 - **PyPI package:** [uzbek-tagger-bert](https://pypi.org/project/uzbek-tagger-bert/)
 - **GitHub repository:** [MaksudSharipov/uzbek-tagger-bert](https://github.com/MaksudSharipov/uzbek-tagger-bert)
 - **Hugging Face model:** [MaksudSharipov/Uzbek-POS-Tagger-TahrirchiBERT](https://huggingface.co/MaksudSharipov/Uzbek-POS-Tagger-TahrirchiBERT)
@@ -113,7 +113,7 @@ UzbekTaggerBERT supports 16 Universal POS tags:
 | SYM | Symbol | Simvol |
 | VERB | Verb | Fe’l |
 
-More information is available in [`docs/tagset.md`](docs/tagset.md).
+More information is available in [`docs/tagset.md`](https://github.com/MaksudSharipov/uzbek-tagger-bert/blob/main/docs/tagset.md).
 
 ## Model
 
@@ -138,7 +138,7 @@ The current public version reports the following evaluation results on the Uzbek
 | Accuracy | 0.9810 |
 | Weighted F1 | 0.9811 |
 
-Additional benchmark results, per-tag scores, baseline comparisons, and inference-speed tests are stored in the [`benchmark/`](benchmark/) directory.
+Additional benchmark results, per-tag scores, baseline comparisons, and inference-speed tests are stored in the [`benchmark/`](https://github.com/MaksudSharipov/uzbek-tagger-bert/tree/main/benchmark) directory.
 
 ## Methodology
 
@@ -208,10 +208,10 @@ uzbek-tagger-bert/
 
 ## Documentation
 
-- Installation guide: [`docs/installation.md`](docs/installation.md)
-- Usage guide: [`docs/usage.md`](docs/usage.md)
-- POS tagset: [`docs/tagset.md`](docs/tagset.md)
-- Benchmark scripts: [`benchmark/README.md`](benchmark/README.md)
+- Installation guide: [`docs/installation.md`](https://github.com/MaksudSharipov/uzbek-tagger-bert/blob/main/docs/installation.md)
+- Usage guide: [`docs/usage.md`](https://github.com/MaksudSharipov/uzbek-tagger-bert/blob/main/docs/usage.md)
+- POS tagset: [`docs/tagset.md`](https://github.com/MaksudSharipov/uzbek-tagger-bert/blob/main/docs/tagset.md)
+- Benchmark scripts: [`benchmark/README.md`](https://github.com/MaksudSharipov/uzbek-tagger-bert/blob/main/benchmark/README.md)
 
 ## Examples
 
@@ -305,4 +305,4 @@ Sharipov, M., Kuriyozov, E., & Vičič, J. (2026). UzbekPOS: A multi-domain data
 
 ## License
 
-This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache License 2.0. See the [LICENSE](https://github.com/MaksudSharipov/uzbek-tagger-bert/blob/main/LICENSE) file for details.

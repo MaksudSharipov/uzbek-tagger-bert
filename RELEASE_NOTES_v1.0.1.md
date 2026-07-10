@@ -1,4 +1,4 @@
-## UzbekTaggerBERT v1.0.0
+## UzbekTaggerBERT v1.0.1
 
 This release provides the SoftwareX-ready version of UzbekTaggerBERT, an open-source Python library for Transformer-based part-of-speech tagging of the Uzbek language.
 

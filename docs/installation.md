@@ -36,7 +36,7 @@ On the first run, the fine-tuned Tahrirchi-BERT POS tagging model is downloaded 
 
 ## Install from GitHub
 
-For development or SoftwareX reproducibility, clone the repository:
+For development or Software Impacts reproducibility, clone the repository:
 
 ```bash
 git clone https://github.com/MaksudSharipov/uzbek-tagger-bert.git

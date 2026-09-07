@@ -1,6 +1,6 @@
 ## UzbekTaggerBERT v1.0.1
 
-This release provides the SoftwareX-ready version of UzbekTaggerBERT, an open-source Python library for Transformer-based part-of-speech tagging of the Uzbek language.
+This release provides the Software Impacts-ready version of UzbekTaggerBERT, an open-source Python library for Transformer-based part-of-speech tagging of the Uzbek language.
 
 ### Highlights
 
@@ -12,7 +12,7 @@ This release provides the SoftwareX-ready version of UzbekTaggerBERT, an open-so
 - Overlap-based offset mapping for subword-to-word alignment.
 - Deterministic punctuation post-processing: punctuation tokens are always tagged as `PUNCT`.
 - Examples, tests, documentation, and benchmark scripts included.
-- Prepared for SoftwareX original software publication submission.
+- Prepared for submission as an Original Software Publication to Software Impacts.
 
 ### Repository structure
 
@@ -35,8 +35,9 @@ The package was validated with:
 
 ### Reported POS tagging performance
 
-- Accuracy: 0.9810
-- Weighted F1: 0.9811
+Evaluated using five-fold cross-validation on UzbekPOS:
+- Five-fold cross-validation mean: Accuracy = 0.9784 ± 0.0023, Weighted F1 = 0.9784 ± 0.0023
+- Best validation fold (Fold 4): Accuracy = 0.9810, Weighted F1 = 0.9811
 
 ### Installation
 

@@ -131,12 +131,16 @@ https://huggingface.co/MaksudSharipov/Uzbek-POS-Tagger-TahrirchiBERT
 
 ## Model Performance
 
-The current public version reports the following evaluation results on the UzbekPOS test dataset:
+The model was evaluated using five-fold cross-validation on UzbekPOS. Across the five validation folds, the model achieved a mean accuracy of 0.9784 ± 0.0023 and a mean weighted F1 of 0.9784 ± 0.0023. The best validation fold (Fold 4) achieved 0.9810 accuracy and 0.9811 weighted F1:
 
-| Metric | Score |
-|---|---:|
-| Accuracy | 0.9810 |
-| Weighted F1 | 0.9811 |
+| Fold | Accuracy | Weighted F1 |
+|------|----------|-------------|
+| 1 | 0.9786 | 0.9786 |
+| 2 | 0.9764 | 0.9764 |
+| 3 | 0.9757 | 0.9757 |
+| 4 | 0.9810 | 0.9811 |
+| 5 | 0.9803 | 0.9803 |
+| Mean ± SD | 0.9784 ± 0.0023 | 0.9784 ± 0.0023 |
 
 Additional benchmark results, per-tag scores, baseline comparisons, and inference-speed tests are stored in the [`benchmark/`](https://github.com/MaksudSharipov/uzbek-tagger-bert/tree/main/benchmark) directory.
 
@@ -267,11 +271,11 @@ Run inference-speed test:
 python benchmark/speed_test.py
 ```
 
-## SoftwareX Article
+## Software Impacts Article
 
-This repository accompanies the SoftwareX manuscript:
+This repository accompanies the manuscript submitted to Software Impacts:
 
-**UzbekTaggerBERT: An Open-Source Python Library for Transformer-Based Part-of-Speech Tagging of the Uzbek Language**
+**UzbekTaggerBERT: A Python library for contextual part-of-speech tagging of Uzbek**
 
 The repository provides the source code, usage examples, documentation, benchmark scripts, and reproducibility materials required for the software publication.
 
